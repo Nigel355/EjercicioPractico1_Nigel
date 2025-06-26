@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de Medicamentos</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Medicamentos</h1>
+    <a th:href="@{/medicamentos/nuevo}" class="btn btn-primary">Nuevo Medicamento</a>
+</header>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="medicamento : ${medicamentos}">
+            <td th:text="${medicamento.id}">1</td>
+            <td th:text="${medicamento.nombre}">Nombre</td>
+            <td th:text="${medicamento.descripcion}">Descripción</td>
+            <td th:text="${medicamento.precio}">0.00</td>
+            <td th:text="${medicamento.stock}">0</td>
+            <td th:text="${medicamento.categoria != null ? medicamento.categoria.nombre : 'Sin categoría'}">Categoría</td>
+            <td>
+                <a th:href="@{'/medicamentos/editar/' + ${medicamento.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a th:href="@{'/medicamentos/eliminar/' + ${medicamento.id}}" class="btn btn-danger btn-sm" 
+                   onclick="return confirm('¿Está seguro de eliminar este medicamento?');">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
