@@ -4,45 +4,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout(~{::title}, ~{::main})">
 <head>
-    <meta charset="UTF-8" />
     <title>Lista de Medicamentos</title>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
 </head>
-<body>
-<header>
-    <h1>Medicamentos</h1>
-    <a th:href="@{/medicamentos/nuevo}" class="btn btn-primary">Nuevo Medicamento</a>
-</header>
+<main>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Medicamentos</h2>
+        <a th:href="@{/medicamentos/nuevo}" class="btn btn-primary">Nuevo Medicamento</a>
+    </div>
 
-<table class="table table-striped mt-3">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="medicamento : ${medicamentos}">
-            <td th:text="${medicamento.id}">1</td>
-            <td th:text="${medicamento.nombre}">Nombre</td>
-            <td th:text="${medicamento.descripcion}">Descripción</td>
-            <td th:text="${medicamento.precio}">0.00</td>
-            <td th:text="${medicamento.stock}">0</td>
-            <td th:text="${medicamento.categoria != null ? medicamento.categoria.nombre : 'Sin categoría'}">Categoría</td>
-            <td>
-                <a th:href="@{'/medicamentos/editar/' + ${medicamento.id}}" class="btn btn-warning btn-sm">Editar</a>
-                <a th:href="@{'/medicamentos/eliminar/' + ${medicamento.id}}" class="btn btn-danger btn-sm" 
-                   onclick="return confirm('¿Está seguro de eliminar este medicamento?');">Eliminar</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="med : ${medicamentos}">
+                <td th:text="${med.id}"></td>
+                <td th:text="${med.nombre}"></td>
+                <td th:text="${med.descripcion}"></td>
+                <td th:text="${med.precio}"></td>
+                <td th:text="${med.stock}"></td>
+                <td th:text="${med.categoria?.nombre} ?: 'Sin categoría'"></td>
+                <td>
+                    <a th:href="@{'/medicamentos/editar/' + ${med.id}}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{'/medicamentos/eliminar/' + ${med.id}}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Eliminar este medicamento?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
 </html>
