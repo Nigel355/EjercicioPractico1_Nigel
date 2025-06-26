@@ -54,6 +54,6 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private List<Medicamento> medicamentos;
 
-    // Getters y Setters
+  
 }
 

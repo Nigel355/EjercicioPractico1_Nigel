@@ -70,5 +70,5 @@ public class Cliente {
     private String email;
     private String direccion;
 
-    // Getters y Setters
+   
 }

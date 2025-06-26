@@ -69,5 +69,5 @@ public class Factura {
     @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
     private List<FacturaDetalle> detalles;
 
-    // Getters y Setters
+    
 }
