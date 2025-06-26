@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+</head>
+<body th:replace="layout/layout :: layout(~{::contenido})">
+<div th:fragment="contenido">
+    <h2>Bienvenido a la Farmacia Central</h2>
+    <p>Ofrecemos una amplia variedad de medicamentos y atención personalizada.</p>
+
+    <h4>Video sobre un medicamento</h4>
+    <video width="320" height="240" controls>
+        <source src="../video/Dalsy - Anuncio Tv.mp4" type="video/mp4">
+        Your browser does not support the <code>video</code> tag.
+    </video>
+</div>
+</body>
+</html>

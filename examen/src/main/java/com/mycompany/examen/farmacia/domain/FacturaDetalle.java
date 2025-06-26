@@ -68,7 +68,5 @@ public class FacturaDetalle {
     @JoinColumn(name = "id_medicamento")
     private Medicamento medicamento;
 
-    // No es necesario mapear el subtotal generado por MySQL, a menos que lo recuperes como campo calculado
-
-    // Getters y Setters
+   
 }

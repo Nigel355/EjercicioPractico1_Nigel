@@ -14,33 +14,36 @@ import org.springframework.web.bind.annotation.*;
  * @author nigel
  */
 @Controller
-@RequestMapping("/categorias")
+@RequestMapping("/categoria")
 public class CategoriaController {
-
+    @GetMapping("/")
+    public String index() {
+        return "index"; 
+    }
     @Autowired
     private CategoriaService categoriaService;
 
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("categorias", categoriaService.listar());
-        return "categorias/lista";
+        return "categoria/lista";
     }
 
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         model.addAttribute("categoria", new Categoria());
-        return "categorias/formulario";
+        return "categoria/formulario";
     }
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Categoria categoria) {
         categoriaService.guardar(categoria);
-        return "redirect:/categorias";
+        return "redirect:/categoria";
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable int id) {
         categoriaService.eliminar(id);
-        return "redirect:/categorias";
+        return "redirect:/categoria";
     }
 }

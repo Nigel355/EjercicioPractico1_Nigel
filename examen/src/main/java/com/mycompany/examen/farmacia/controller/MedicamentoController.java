@@ -28,9 +28,10 @@ public class MedicamentoController {
 
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
-        model.addAttribute("medicamento", new Medicamento());
-        return "medicamentos/formulario";
-    }
+    model.addAttribute("medicamento", new Medicamento());  // objeto vacío para el formulario
+    
+    return "agregarmedicamento/formulario"; // o la ruta correcta a tu plantilla formulario.html
+}
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Medicamento medicamento) {

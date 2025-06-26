@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Farmacia</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div th:fragment="layout(contenido)">
+    <header class="bg-primary text-white text-center p-3">
+        <h1>Farmacia Central</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/categoria}">Medicamentos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div th:replace="${contenido}"></div>
+    </main>
+
+    <footer class="bg-black text-white text-center p-3 mt-4">
+        <p>Farmacia Central © 2025 - Todos los derechos reservados</p>
+    </footer>
+</div>
+
+</body>
+</html>

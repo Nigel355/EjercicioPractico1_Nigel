@@ -74,5 +74,5 @@ public class Medicamento {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    // Getters y Setters
+    
 }
